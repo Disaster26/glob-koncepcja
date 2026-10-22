@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Biuro Podróży GLOB - wycieczki szkolne i wyjazdy firmowe, Sokołów Podlaski</title>
+<meta name="description" content="Biuro Podróży GLOB, ul. Wolności 55, Sokołów Podlaski. Wycieczki szkolne, wyjazdy dla firm i grup, wczasy, bilety. Zapytanie o wyjazd z orientacyjną wyceną.">
+<meta name="theme-color" content="#0f1a21">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--
+  WIZUALIZACJA KONCEPCYJNA (bezplatny podglad) dla Biura Podrozy GLOB.
+  Dane firmy, nazwy programow, referencje i oferta "Narty 2027" pochodza z obecnej strony glob.home.pl
+  oraz z podpisu wlasciciela. Zdjecia pochodza z obecnej strony biura.
+  PRZYKLADOWE: stawki uzyte do orientacyjnej wyceny w kreatorze (app.js, obiekt STAWKI) - do zastapienia cennikiem biura.
+-->
+<header class="top" id="top">
+  <div class="wrap top-in">
+    <a class="logo" href="#top" aria-label="Biuro Podróży GLOB - strona główna"><img src="img/logo-glob.png" alt="GLOB" width="179" height="74"><span>Biuro Podróży<br>Sokołów Podlaski</span></a>
+    <nav class="menu" id="menu" aria-label="Menu">
+      <a href="#zapytanie">Zapytanie o wyjazd</a>
+      <a href="#oferta">Programy</a>
+      <a href="#narty">Narty 2027</a>
+      <a href="#wczasy">Wczasy i bilety</a>
+      <a href="#referencje">Referencje</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a class="tel" id="telTop" href="tel:+48257877500" aria-label="Zadzwoń: 25 787 75 00">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+      <span>25 787 75 00</span>
+    </a>
+    <button class="ham" id="ham" aria-label="Otwórz menu" aria-expanded="false" aria-controls="menu"><i></i><i></i><i></i></button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="hero">
+  <div class="hero-foto" aria-hidden="false">
+    <figure class="hf hf-a"><img src="img/liguria.jpg" alt="Cinque Terre w Ligurii" fetchpriority="high"><figcaption>Liguria - 4 dni, wyjazd dla firm</figcaption></figure>
+    <figure class="hf hf-b"><img src="img/krakow-wawel.jpg" alt="Wawel w Krakowie"><figcaption>Kraków - Zator - Wieliczka, 3 dni dla szkół</figcaption></figure>
+    <figure class="hf hf-c"><img src="img/gdansk.jpg" alt="Gdańsk, widok na Główne Miasto"><figcaption>Bałtyk Express, 3 dni dla szkół</figcaption></figure>
+  </div>
+  <div class="hero-in">
+    <p class="adres">ul. Wolności 55, Sokołów Podlaski, pon.-pt. 9:00-18:00</p>
+    <h1>Wycieczki dla szkół, firm i&nbsp;grup z&nbsp;Sokołowa Podlaskiego</h1>
+    <p class="lead">Układamy program, zamawiamy autokar i&nbsp;noclegi, jedziemy z&nbsp;pilotem. Proszę opisać grupę i&nbsp;termin, a&nbsp;od razu zobaczą Państwo orientacyjny koszt.</p>
+    <a class="btn btn-g" id="heroCta" href="#zapytanie">Zapytaj o wyjazd</a>
+    <p class="uslugi">Oprócz wycieczek: wczasy u touroperatorów oraz bilety lotnicze, promowe i autokarowe.</p>
+  </div>
+</section>
+
+<section class="sek" id="zapytanie">
+  <div class="wrap">
+    <h2>Zapytanie o wyjazd z orientacyjną wyceną</h2>
+    <p class="sek-lead">Kilka pytań o grupę i termin. Od razu widać orientacyjny koszt na osobę i gotową treść zapytania, którą można wysłać mailem albo przeczytać nam przez telefon.</p>
+
+    <div class="kreator">
+      <form class="kr-form" id="kr" autocomplete="on" onsubmit="return false">
+        <fieldset>
+          <legend>Kto jedzie?</legend>
+          <div class="seg" data-pole="grupa" role="radiogroup">
+            <button type="button" data-v="szkola" aria-pressed="true">Klasa lub szkoła</button>
+            <button type="button" data-v="firma" aria-pressed="false">Firma lub urząd</button>
+            <button type="button" data-v="grupa" aria-pressed="false">Grupa zorganizowana</button>
+            <button type="button" data-v="rodzina" aria-pressed="false">Rodzina, znajomi</button>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Dokąd?</legend>
+          <label class="pole"><span>Program z katalogu biura</span>
+            <select id="program"></select>
+          </label>
+          <label class="pole" id="wlasnyBox" hidden><span>Własny pomysł na trasę</span>
+            <input id="wlasny" type="text" placeholder="np. Zakopane i Pieniny">
+          </label>
+          <div class="pole" id="trBox"><span>Transport</span>
+            <div class="seg seg-m" data-pole="transport">
+              <button type="button" data-v="pl" aria-pressed="true">Autokar, Polska</button>
+              <button type="button" data-v="eu" aria-pressed="false">Autokar, za granicę</button>
+              <button type="button" data-v="lot" aria-pressed="false">Samolot</button>
+              <button type="button" data-v="prom" aria-pressed="false">Prom</button>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="dwa">
+          <legend>Kiedy i na ile?</legend>
+          <label class="pole" id="dniBox"><span>Liczba dni</span>
+            <span class="licznik"><button type="button" data-d="dni" data-k="-1" aria-label="Mniej dni">-</button><input id="dni" type="number" inputmode="numeric" min="1" max="14" value="3"><button type="button" data-d="dni" data-k="1" aria-label="Więcej dni">+</button></span>
+          </label>
+          <label class="pole"><span>Miesiąc wyjazdu</span>
+            <select id="termin"></select>
+          </label>
+        </fieldset>
+
+        <fieldset class="dwa">
+          <legend>Ile osób?</legend>
+          <label class="pole"><span id="lblUcz">Uczniowie</span>
+            <span class="licznik"><button type="button" data-d="osoby" data-k="-5" aria-label="Mniej osób">-</button><input id="osoby" type="number" inputmode="numeric" min="1" max="300" value="40"><button type="button" data-d="osoby" data-k="5" aria-label="Więcej osób">+</button></span>
+          </label>
+          <label class="pole" id="opBox"><span>Opiekunowie</span>
+            <span class="licznik"><button type="button" data-d="opiekunowie" data-k="-1" aria-label="Mniej opiekunów">-</button><input id="opiekunowie" type="number" inputmode="numeric" min="0" max="30" value="3"><button type="button" data-d="opiekunowie" data-k="1" aria-label="Więcej opiekunów">+</button></span>
+          </label>
+        </fieldset>
+
+        <fieldset class="dwa">
+          <legend>Budżet i kontakt</legend>
+          <label class="pole"><span>Budżet na osobę, zł (opcjonalnie)</span>
+            <input id="budzet" type="number" inputmode="numeric" min="0" step="10" placeholder="np. 800">
+          </label>
+          <label class="pole"><span id="lblNazwa">Szkoła</span>
+            <input id="nazwa" type="text" placeholder="np. SP nr 1, klasy 6a i 6b" autocomplete="organization">
+          </label>
+          <label class="pole"><span>Imię i telefon</span>
+            <input id="kontakt" type="text" placeholder="np. Anna, 600 000 000" autocomplete="name">
+          </label>
+          <label class="pole"><span>Uwagi</span>
+            <input id="uwagi" type="text" placeholder="np. nocleg z basenem, wyjazd po 8:00">
+          </label>
+        </fieldset>
+      </form>
+
+      <aside class="kr-wynik" id="wynik" aria-live="polite">
+        <h3 id="wTytul">Kraków - Zator - Wieliczka</h3>
+        <p class="w-meta" id="wMeta"></p>
+        <div class="w-cena" id="wCena"></div>
+        <ul class="w-rozb" id="wRozb"></ul>
+        <p class="w-budzet" id="wBudzet" hidden></p>
+        <details class="w-tresc">
+          <summary>Treść zapytania</summary>
+          <pre id="wTekst"></pre>
+        </details>
+        <div class="w-akcje">
+          <a class="btn btn-g" id="wMail" href="mailto:glob@home.pl">Wyślij zapytanie mailem</a>
+          <a class="btn btn-o" href="tel:+48257877500">Zadzwoń: 25 787 75 00</a>
+          <button class="btn-txt" type="button" id="wKopiuj">Skopiuj treść zapytania</button>
+        </div>
+        <p class="w-uwaga">Widełki w tym podglądzie liczone są z przykładowych stawek. W gotowej stronie podstawimy cennik biura.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="sek sek-alt" id="oferta">
+  <div class="wrap">
+    <h2>Programy z katalogu biura</h2>
+    <p class="sek-lead">W katalogu jest ponad 90 programów dla szkół i 40 wyjazdów dla firm i grup. Cena zależy od liczby uczestników, dlatego każdy wyjazd wyceniamy pod konkretną grupę.</p>
+    <div class="zakl" role="tablist">
+      <button type="button" role="tab" aria-selected="true" data-z="szk">Dla szkół</button>
+      <button type="button" role="tab" aria-selected="false" data-z="fir">Dla firm i grup</button>
+    </div>
+    <div class="karty" data-z="szk">
+      <article class="karta"><img src="img/kopernik.jpg" alt="Centrum Nauki Kopernik" loading="lazy"><div><h3>Z wizytą w Centrum Nauki Kopernik</h3><p>1 dzień, Warszawa naukowa</p><button type="button" class="kbtn" data-g="szkola" data-p="Z wizytą w Centrum Nauki Kopernik">Zapytaj o ten wyjazd</button></div></article>
+      <article class="karta"><img src="img/farma-iluzji.jpg" alt="Farma Iluzji" loading="lazy"><div><h3>Farma Iluzji</h3><p>1 dzień, wycieczka dla młodszych klas</p><button type="button" class="kbtn" data-g="szkola" data-p="Farma Iluzji">Zapytaj o ten wyjazd</button></div></article>
+      <article class="karta"><img src="img/mazury.jpg" alt="Port jachtowy na Mazurach" loading="lazy"><div><h3>Mazury - kraina zamków i jezior</h3><p>2 dni, autokarem</p><button type="button" class="kbtn" data-g="szkola" data-p="Mazury - kraina zamków i jezior">Zapytaj o ten wyjazd</button></div></article>
+      <article class="karta"><img src="img/krakow-wawel.jpg" alt="Wawel" loading="lazy"><div><h3>Kraków - Zator - Wieliczka</h3><p>3 dni, autokarem</p><button type="button" class="kbtn" data-g="szkola" data-p="Kraków - Zator - Wieliczka">Zapytaj o ten wyjazd</button></div></article>
+      <article class="karta"><img src="img/gdansk.jpg" alt="Gdańsk" loading="lazy"><div><h3>Bałtyk Express</h3><p>3 dni, autokarem</p><button type="button" class="kbtn" data-g="szkola" data-p="Bałtyk Express">Zapytaj o ten wyjazd</button></div></article>
+      <article class="karta"><img src="img/praga.jpg" alt="Praga, Most Karola" loading="lazy"><div><h3>Złota Praga - 4 dni</h3><p>4 dni, wycieczka zagraniczna</p><button type="button" class="kbtn" data-g="szkola" data-p="Złota Praga - 4 dni">Zapytaj o ten wyjazd</button></div></article>
+    </div>
+    <div class="karty" data-z="fir" hidden>
+      <article class="karta"><img src="img/liguria.jpg" alt="Liguria" loading="lazy"><div><h3>Liguria - 4 dni</h3><p>Włochy, wyjazd dla firm</p><button type="button" class="kbtn" data-g="firma" data-p="Liguria - 4 dni">Zapytaj o ten wyjazd</button></div></article>
+      <article class="karta"><img src="img/mostar.jpg" alt="Mostar" loading="lazy"><div><h3>Chorwacja i Bośnia - 5 dni</h3><p>Bałkany, wyjazd dla firm</p><button type="button" class="kbtn" data-g="firma" data-p="Chorwacja i Bośnia - 5 dni">Zapytaj o ten wyjazd</button></div></article>
+      <article class="karta"><img src="img/portugalia.jpg" alt="Wybrzeże Portugalii" loading="lazy"><div><h3>Portugalia - w rytmie Fado</h3><p>6 dni, samolotem</p><button type="button" class="kbtn" data-g="firma" data-p="Portugalia - w rytmie Fado - 6 dni">Zapytaj o ten wyjazd</button></div></article>
+      <article class="karta"><img src="img/gruzja.jpg" alt="Gruzja" loading="lazy"><div><h3>Gruzja: kraj gór, wina, tańca i słońca</h3><p>8 dni, samolotem</p><button type="button" class="kbtn" data-g="firma" data-p="Gruzja - 8 dni">Zapytaj o ten wyjazd</button></div></article>
+      <article class="karta"><img src="img/andaluzja.jpg" alt="Andaluzja, promenada" loading="lazy"><div><h3>Andaluzja</h3><p>Zwiedzanie i wypoczynek</p><button type="button" class="kbtn" data-g="firma" data-p="Andaluzja - zwiedzanie i wypoczynek">Zapytaj o ten wyjazd</button></div></article>
+      <article class="karta"><img src="img/helsinki.jpg" alt="Helsinki" loading="lazy"><div><h3>Perły Bałtyku - 5 dni</h3><p>Helsinki, Ryga, Tallin</p><button type="button" class="kbtn" data-g="firma" data-p="Perły Bałtyku - 5 dni">Zapytaj o ten wyjazd</button></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="sek" id="narty">
+  <div class="wrap narty">
+    <img class="narty-plakat" src="img/narty-2027.jpg" alt="Plakat wyjazdu Narty 2027, Kronplatz i Alta Badia" loading="lazy" width="760" height="1140">
+    <div class="narty-txt">
+      <h2>Narty 2027: Kronplatz i Alta Badia</h2>
+      <p class="sek-lead">Wyjazd narciarski we włoskie Dolomity, 30 stycznia - 6 lutego 2027.</p>
+      <dl class="fakty-lista">
+        <div><dt>Hotel</dt><dd>Muehlgarten**** w San Lorenzo, strefa SPA</dd></div>
+        <div><dt>Wyżywienie</dt><dd>HB, śniadania i obiadokolacje</dd></div>
+        <div><dt>Dojazd</dt><dd>autokarem</dd></div>
+        <div><dt>Cena</dt><dd>675 EUR + 1 350 zł od osoby</dd></div>
+        <div><dt>Zaliczka</dt><dd>500 zł, płatna on-line</dd></div>
+      </dl>
+      <button type="button" class="btn btn-g kbtn" data-g="grupa" data-p="Narty 2027 - Kronplatz i Alta Badia">Zapytaj o wolne miejsca</button>
+    </div>
+  </div>
+</section>
+
+<section class="sek sek-alt" id="wczasy">
+  <div class="wrap dwie">
+    <div>
+      <h2>Wczasy u touroperatorów</h2>
+      <p>Sprzedajemy ofertę największych touroperatorów na polskim rynku. Sprawdzimy dostępność i ceny na Państwa termin, porównamy hotele i dopilnujemy rezerwacji. Najszybciej przez telefon: <a href="tel:+48257872060">25 787 20 60</a>.</p>
+    </div>
+    <div>
+      <h2>Bilety</h2>
+      <p>Bilety lotnicze, promowe i autokarowe do kupienia w biurze przy ul. Wolności 55. Dla grup rezerwujemy przeloty i promy razem z resztą wyjazdu.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sek" id="referencje">
+  <div class="wrap">
+    <h2>Referencje</h2>
+    <div class="cytaty">
+      <blockquote>
+        <p>„Pragnę wyrazić nasze ogromne zadowolenie z kolejnej imprezy integracyjnej, którą zorganizowało dla naszego urzędu Biuro Glob. (...) Wycieczka zrealizowana była z najwyższą starannością.”</p>
+        <footer>Urząd Gminy Trzebieszów</footer>
+      </blockquote>
+      <blockquote>
+        <p>„Wzorowa opieka pilota, interesujące opowieści przewodników, przyczyniły się do tego, że był to dla nas też wspaniały czas relaksu. Mamy nadzieję na dalszą współpracę z Państwa Biurem.”</p>
+        <footer>Szkoła Podstawowa nr 1 w Sokołowie Podlaskim</footer>
+      </blockquote>
+    </div>
+    <h3 class="ref-h">Pisemne referencje wystawili nam między innymi</h3>
+    <ul class="ref-lista">
+      <li>Zespół Szkół w Sabniach</li>
+      <li>Związek Zawodowy Pracowników Poczty</li>
+      <li>Urząd Gminy Trzebieszów</li>
+      <li>Polski Związek Emerytów, Rencistów i Inwalidów w Sokołowie Podlaskim</li>
+      <li>Dyrekcja Generalna Lasów Państwowych w Warszawie</li>
+      <li>Urząd Gminy w Borowiu</li>
+      <li>Regionalna Dyrekcja Lasów Państwowych w Warszawie</li>
+      <li>Bank Spółdzielczy w Ostrowi Mazowieckiej</li>
+      <li>Urząd Miasta Mińsk Mazowiecki</li>
+      <li>Publiczna Szkoła Podstawowa nr 1 w Sokołowie Podlaskim</li>
+      <li>Starostwo Powiatowe w Sokołowie Podlaskim</li>
+      <li>Okręgowa Spółdzielnia Mleczarska w Kosowie Lackim</li>
+    </ul>
+  </div>
+</section>
+
+<section class="sek sek-alt" id="kontakt">
+  <div class="wrap kontakt">
+    <div class="k-dane">
+      <h2>Kontakt</h2>
+      <p class="k-firma">Biuro Podróży, Turystyki i Aktywnego Wypoczynku GLOB<br>ul. Wolności 55, 08-300 Sokołów Podlaski</p>
+      <ul class="k-lista">
+        <li><span>Biuro</span><a href="tel:+48257877500">25 787 75 00</a></li>
+        <li><span>Tel./fax</span><a href="tel:+48257872060">25 787 20 60</a></li>
+        <li><span>Komórka</span><a href="tel:+48604950362">604 950 362</a></li>
+        <li><span>E-mail</span><a href="mailto:glob@home.pl">glob@home.pl</a></li>
+        <li><span>Godziny</span>poniedziałek - piątek, 9:00-18:00</li>
+      </ul>
+      <p class="k-social"><a href="https://www.facebook.com/profile.php?id=100063517299479" rel="noopener" target="_blank">Facebook</a><a href="https://www.instagram.com/biuropodrozyglob/" rel="noopener" target="_blank">Instagram</a></p>
+      <a class="btn btn-g" id="dojazd" href="https://www.google.com/maps/dir/?api=1&amp;destination=Biuro+Podr%C3%B3%C5%BCy+GLOB%2C+Wolno%C5%9Bci+55%2C+08-300+Soko%C5%82%C3%B3w+Podlaski" target="_blank" rel="noopener">Wyznacz dojazd</a>
+    </div>
+    <div class="k-mapa">
+      <iframe title="Mapa: ul. Wolności 55, Sokołów Podlaski" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=22.2263%2C52.4033%2C22.2423%2C52.4103&amp;layer=mapnik&amp;marker=52.40687%2C22.23428"></iframe>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="stopka">
+  <div class="wrap">
+    <p>Prywatne Biuro Podróży, Turystyki i Aktywnego Wypoczynku GLOB, Grzegorz Kobyliński, ul. Wolności 55, 08-300 Sokołów Podlaski</p>
+    <p class="mut">Wizualizacja koncepcyjna nowej strony. Zdjęcia i programy pochodzą z obecnej strony biura.</p>
+  </div>
+</footer>
+
+<nav class="mob" id="mob" aria-label="Szybki kontakt">
+  <a href="tel:+48257877500">Zadzwoń</a>
+  <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Biuro+Podr%C3%B3%C5%BCy+GLOB%2C+Wolno%C5%9Bci+55%2C+08-300+Soko%C5%82%C3%B3w+Podlaski" target="_blank" rel="noopener">Dojazd</a>
+  <a href="#zapytanie" class="mob-g">Zapytaj</a>
+</nav>
+
+<script src="app.js"></script>
+</body>
+</html>
